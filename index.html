@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font -->
+    <script src="https://kit.fontawesome.com/20fe58129f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="temp_container"><br>
+        <div class="header">
+            <span class="heading">&#160;TEMPERATURE CONVERTER</span>
+            <span class="icon"><i class="fas fa-temperature-high">&#160;</i></span>
+        </div><br>
+
+        <div class="text_symbol">
+            <span>&#160;&#8451; &#8457;&#160 K</span>
+            <span class="temp_icon"><i class="fas fa-cloud-sun-rain">&#160;</i></span>
+        </div><br>
+
+        <div class="input_temperature">
+            <div class="degree_field">
+                <span class="degree">Degree</span>
+                <input type="number" value="0" id="degree">
+            </div>
+
+            <div class="temp_field">
+                <span class="temp_type">Type</span>
+                <select name="temperatures" id="temp_type" autocomplete="on">
+                    <option value="celsius">Celsius (&#8451;)</option>
+                    <option value="fahrenheit">Fahrenheit (&#8457;)</option>
+                    <option value="kelvin">Kelvin (K)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="result">
+            <span class="text_result">Result</span>
+            <h2 class="value" id="result">0</h2>
+        </div>
+        <div class="button">
+            <button id="convert_btn">CONVERT</button>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.getElementById("convert_btn").addEventListener("click", function() {
+            var degree = parseFloat(document.getElementById("degree").value);
+            var tempType = document.getElementById("temp_type").value;
+            var result;
+
+            if (tempType === "celsius") {
+                result = (degree * 9 / 5) + 32;
+                document.getElementById("result").innerHTML = result.toFixed(2) + " &#8457;";
+            } else if (tempType === "fahrenheit") {
+                result = (degree - 32) * 5 / 9;
+                document.getElementById("result").innerHTML = result.toFixed(2) + " &#8451;";
+            } else if (tempType === "kelvin") {
+                result = degree + 273.15;
+                document.getElementById("result").innerHTML = result.toFixed(2) + " K";
+            }
+        });
+    </script>
+</body>
+</html>
